@@ -1,0 +1,22 @@
+services:
+  database:
+    build: .
+    environment:
+      - POSTGRES_USER=django 
+      - POSTGRES_PASSWORD=django 
+      - POSTGRES_DB=django 
+      - USERMAP_UID=999 
+      - USERMAP_GID=999
+    ports: 
+      - "5432:5432"
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+  app:
+    build: ./observer/. 
+    ports:
+      - "8000:8000"
+    links: 
+      - "database:database"
+    restart: on-failure:5
+    depends_on:
+      - database
