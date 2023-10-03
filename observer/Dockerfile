@@ -1,6 +1,6 @@
 FROM python:3.11-slim
 #Setting up an app directory
-WORKDIR /usr/src/backend
+WORKDIR /usr/src/observer
 #Copy content
 COPY . .
 #Making container logs unbuffered 
