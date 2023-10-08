@@ -5,8 +5,9 @@ WORKDIR /usr/src/observer
 COPY . .
 #Making container logs unbuffered 
 ENV PYTHONUNBUFFERED 1
+
 #installing dependencies
 RUN pip3 install -r ./requirements.txt
 
 #running the app
-CMD python manage.py runserver 0.0.0.0:8000
+ENTRYPOINT ["python3", "manage.py", "runserver", "0.0.0.0:8081"]

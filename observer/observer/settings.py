@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-id+v#u8xfc+t1!3*v@bx)@x@rhljs@1$src#(d@3n^mr=l^bdl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost"]
 
 
 # Application definition
@@ -77,16 +77,21 @@ WSGI_APPLICATION = 'observer.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "postgres",
-        "USER": "django",
-        "PASSWORD": "django",
-        "HOST": "database",
-        "PORT": "5432",
-        "CONN_MAX_AGE": None
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     },
+    # 'default': {
+    #     "ENGINE": "django.db.backends.postgresql",
+    #     "NAME": "postgres",
+    #     "USER": "django",
+    #     "PASSWORD": "django",
+    #     "HOST": "postgres_1",
+    #     "PORT": "5432",
+    #     "CONN_MAX_AGE": None
+    # }
 }
+
 
 
 # Password validation
