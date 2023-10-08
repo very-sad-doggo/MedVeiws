@@ -4,7 +4,7 @@ services:
     environment:
       - POSTGRES_USER=django 
       - POSTGRES_PASSWORD=django 
-      - POSTGRES_DB=django 
+      - POSTGRES_DB=postgres 
       - USERMAP_UID=999 
       - USERMAP_GID=999
     ports: 
