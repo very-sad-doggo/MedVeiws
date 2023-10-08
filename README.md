@@ -35,3 +35,6 @@ typing activating command. For example - for windows powershell it will be
 ```bash
    python manage.py runserver
 ```
+
+
+# Запуск через 
