@@ -1,5 +1,13 @@
 FROM python:3.11-slim
+#Setting up an app directory
+WORKDIR /usr/src/observer
+#Copy content
+COPY . .
+#Making container logs unbuffered 
 ENV PYTHONUNBUFFERED 1
 
+#installing dependencies
+RUN pip3 install -r ./requirements.txt
 
-WORKDIR /MedViews
+#running the app
+ENTRYPOINT ["python3", "manage.py", "runserver", "0.0.0.0:8081"]
