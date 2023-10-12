@@ -66,3 +66,5 @@ sudo systemctl start observer.service
 ```
 
 6. Once the service is up and running you can try to access the app connecting to **localhost:8081** via your browser
+
+## ДОПИСАТЬ ТРЕТИЙ СЕРВИС ДЛЯ ЗАПОЛНЕНИЯ ПГ

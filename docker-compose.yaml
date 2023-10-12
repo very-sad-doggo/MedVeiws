@@ -9,10 +9,18 @@ services:
       - USERMAP_GID=999
     ports: 
       - "5432:5432"
-    volumes:
-      - ./data/db/data/data/.:/var/lib/postgresql/data
+    # volumes:
+    #   - ./data/db/data/data/.:/var/lib/postgresql/data
     networks:
       - db_network
+  create_tables:
+    build: ./create_tables/create_tables/.
+    ports:
+    - "5432:5432"
+    networks:
+      - db_network
+    depends_on:
+      - database
   app:
     build: ./observer/. 
     ports:
