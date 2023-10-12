@@ -1,4 +1,4 @@
-#!/bin/bashß
+#!/bin/bash
 
 ###############################
 ###### Meet Requirements ######
