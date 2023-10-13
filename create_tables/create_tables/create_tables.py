@@ -9,7 +9,16 @@ def create_mm_schema():
     cur = conn.cursor()
     cur.execute(
         sql.SQL(
-            "CREATE SCHEMA mm AUTHORIZATION postgres;"
+            "CREATE SCHEMA mm AUTHORIZATION django;"
+        )
+    )
+    conn.commit()
+
+def change_date_format():
+    cur = conn.cursor()
+    cur.execute(
+        sql.SQL(
+            "  SET datestyle = dmy;"
         )
     )
     conn.commit()
@@ -119,14 +128,44 @@ def insert_dbkis():
     )
     conn.commit()
 
+def create_relations_table():
+    cur = conn.cursor()
+    cur.execute(
+        sql.SQL(
+            "CREATE TABLE idd (" +
+            "dept_id SERIAL PRIMARY KEY," +
+            "content TEXT NOT NULL," +
+            "CONSTRAINT dept_id FOREIGN KEY(dept_id) REFERENCES mm.dept(id)" +
+            ")"
+        )
+    )
+    conn.commit()
+
+def inser_idd():
+    cur = conn.cursor()
+    cur.execute(
+        sql.SQL(
+            "insert into idd (dept_id, content)" +
+            "values"
+            "('1', 'хир')," +
+            "('2','AA')," +
+            "('3','BB')"
+        )
+    )
+    conn.commit()
+
+
 def main():
     create_mm_schema()
+    change_date_format()
     create_mm_dept()
     insert_mm_dept()
     create_mm_tap()
     insert_mm_tap()
     create_mm_db_kis()
     insert_dbkis()
+    create_relations_table()
+    inser_idd()
 
 if __name__ == "__main__":
     main()

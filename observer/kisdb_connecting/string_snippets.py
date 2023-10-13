@@ -63,7 +63,7 @@ system_error = '\t<p class="center-top-text">SYSTEM ERROR!</p>\n'
 
 date_validation_error = '\t\t<p class="center-top-text">Дата окончания периода не может быть меньше даты начала!</p>\n'
 
-depts_by_ids = 'SELECT d.name FROM mm.dept d'
+depts_by_ids = 'SELECT d.name FROM "mm.dept" as d;'
 
-common_simi_query = 'SELECT * FROM mm.tap2'
+common_simi_query = 'SELECT * FROM mm.tap2;'
 

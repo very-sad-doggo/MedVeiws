@@ -1,3 +1,5 @@
+version: '3'
+
 services:
   database:
     build: .
@@ -8,19 +10,24 @@ services:
       - USERMAP_UID=999 
       - USERMAP_GID=999
     ports: 
-      - "5432:5432"
-    # volumes:
-    #   - ./data/db/data/data/.:/var/lib/postgresql/data
+      - "5432:5432" 
     networks:
       - db_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 15s
+      timeout: 30s
+      retries: 10
+      start_period: 30s
   create_tables:
     build: ./create_tables/create_tables/.
-    ports:
-    - "5432:5432"
     networks:
       - db_network
+    links:
+      - "database:database"
     depends_on:
-      - database
+      database:
+        condition: service_healthy
   app:
     build: ./observer/. 
     ports:
